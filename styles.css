@@ -86,9 +86,11 @@ header p {
 }
 
 .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .pokemon-list {
@@ -98,6 +100,7 @@ header p {
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     max-height: 600px;
     overflow-y: auto;
+    width: 100%;
 }
 
 .pokemon-item {
@@ -142,6 +145,7 @@ header p {
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     max-height: 600px;
     overflow-y: auto;
+    width: 100%;
 }
 
 .pokemon-details h2 {
@@ -226,10 +230,6 @@ header p {
 .type-fairy { background: #EE99AC; }
 
 @media (max-width: 768px) {
-    .content {
-        grid-template-columns: 1fr;
-    }
-    
     .search-section {
         flex-direction: column;
         align-items: center;
