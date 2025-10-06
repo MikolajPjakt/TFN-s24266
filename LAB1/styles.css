@@ -85,6 +85,17 @@ header p {
     border: 1px solid #ffcdd2;
 }
 
+/* Collapse empty system bars so they don't show as stripes */
+.loading:empty, .error:empty {
+    display: none;
+}
+
+/* Hide empty content sections so only one of list/details is visible */
+.pokemon-list:empty,
+.pokemon-details:empty {
+    display: none;
+}
+
 .content {
     display: flex;
     flex-direction: column;

@@ -1,4 +1,3 @@
-// GameDex - Pokemon Search Application
 class GameDex {
     constructor() {
         this.pokemonList = [];
@@ -39,7 +38,7 @@ class GameDex {
         try {
             const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`Błąd HTTP! status: ${response.status}`);
             }
             const data = await response.json();
             this.pokemonList = data.results;
@@ -52,7 +51,7 @@ class GameDex {
         try {
             const response = await fetch(pokemonUrl);
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`Błąd HTTP! status: ${response.status}`);
             }
             const data = await response.json();
             return data;
@@ -103,7 +102,7 @@ class GameDex {
         const pokemonListElement = document.getElementById('pokemonList');
         const pokemonDetailsElement = document.getElementById('pokemonDetails');
         
-        pokemonDetailsElement.style.display = 'none';
+        pokemonDetailsElement.innerHTML = '';
         pokemonListElement.innerHTML = '';
 
         this.pokemonList.forEach(async (pokemon, index) => {
@@ -139,8 +138,7 @@ class GameDex {
         const pokemonDetailsElement = document.getElementById('pokemonDetails');
         const pokemonListElement = document.getElementById('pokemonList');
         
-        pokemonListElement.style.display = 'none';
-        pokemonDetailsElement.style.display = 'block';
+        pokemonListElement.innerHTML = '';
 
         const types = pokemon.types.map(type => type.type.name);
         const stats = pokemon.stats.map(stat => ({
@@ -204,25 +202,27 @@ class GameDex {
         const pokemonListElement = document.getElementById('pokemonList');
         const pokemonDetailsElement = document.getElementById('pokemonDetails');
         
-        pokemonListElement.style.display = 'block';
-        pokemonDetailsElement.style.display = 'none';
+        pokemonDetailsElement.innerHTML = '';
+        this.displayPokemonList();
     }
 
     showLoading(show) {
         const loadingElement = document.getElementById('loading');
-        loadingElement.style.display = show ? 'block' : 'none';
+        loadingElement.textContent = show ? 'Ładowanie...' : '';
     }
 
     showError(message) {
         const errorElement = document.getElementById('error');
-        const errorMessageElement = document.getElementById('errorMessage');
-        errorMessageElement.textContent = message;
-        errorElement.style.display = 'block';
+        if (message) {
+            errorElement.textContent = message;
+        } else {
+            errorElement.textContent = '';
+        }
     }
 
     hideError() {
         const errorElement = document.getElementById('error');
-        errorElement.style.display = 'none';
+        errorElement.textContent = '';
     }
 
     capitalizeFirst(str) {
