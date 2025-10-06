@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameDex - Pokemon Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GameDex</h1>
+            <p>Mini-aplikacja do szybkiego wyszukiwania Pokemonów</p>
+        </header>
+
+        <div class="search-section">
+            <input type="text" id="searchInput" placeholder="Wyszukaj Pokemon..." />
+            <button id="searchBtn">Szukaj</button>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <p>Ładowanie...</p>
+        </div>
+
+        <div class="error" id="error" style="display: none;">
+            <p id="errorMessage"></p>
+        </div>
+
+        <div class="content">
+            <div class="pokemon-list" id="pokemonList">
+                <!-- Lista Pokemonów będzie tutaj -->
+            </div>
+
+            <div class="pokemon-details" id="pokemonDetails" style="display: none;">
+                <!-- Szczegóły wybranego Pokemona będą tutaj -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
